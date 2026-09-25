@@ -1,13 +1,9 @@
-﻿using MongoDB.Bson;
-using MongoDB.Bson.Serialization.Attributes;
+﻿using Doccure.DoctorService.Entities;
 
-namespace Doccure.DoctorService.Entities
+namespace Doccure.DoctorService.Dtos.DoctorDtos
 {
-    public class Doctor
+    public class UpdateDoctorDto
     {
-        [BsonId]
-        [BsonRepresentation(BsonType.ObjectId)]
-
         public string DoctorId { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
@@ -18,7 +14,6 @@ namespace Doccure.DoctorService.Entities
         public string About { get; set; }
         public int ExperienceYear { get; set; }
         public decimal PricePerHour { get; set; }
-        public bool Status { get; set; }
 
 
         public List<Education> Educations { get; set; }
@@ -26,6 +21,5 @@ namespace Doccure.DoctorService.Entities
         public List<Award> Awards { get; set; }
         public List<string> Services { get; set; }
         public List<string> Specializations { get; set; }
-
     }
 }
