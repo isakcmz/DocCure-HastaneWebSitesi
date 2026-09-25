@@ -1,3 +1,4 @@
+using Doccure.BranchService.Services;
 using Doccure.BranchService.Settings;
 using Microsoft.Extensions.Options;
 
@@ -13,6 +14,8 @@ builder.Services.AddSingleton<IDatabaseSettings>(sp =>
 
 
 builder.Services.AddAutoMapper(typeof(Program));
+
+builder.Services.AddScoped<IBranchService, BranchService>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
