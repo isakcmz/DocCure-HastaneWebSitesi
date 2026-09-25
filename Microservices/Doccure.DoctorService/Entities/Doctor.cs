@@ -1,4 +1,5 @@
-﻿using MongoDB.Bson;
+﻿using Doccure.DoctorService.Dtos.DoctorDtos;
+using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
 namespace Doccure.DoctorService.Entities
@@ -24,6 +25,7 @@ namespace Doccure.DoctorService.Entities
         public List<Education> Educations { get; set; }
         public List<Experience> Experiences { get; set; }
         public List<Award> Awards { get; set; }
+        public List<Location> Locations { get; set; }
         public List<string> Services { get; set; }
         public List<string> Specializations { get; set; }
 
