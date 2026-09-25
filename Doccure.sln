@@ -9,6 +9,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Doccure.BranchService", "Mi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Doccure.DoctorService", "Microservices\Doccure.DoctorService\Doccure.DoctorService.csproj", "{F3827B74-9451-4FB7-83F9-D5F5173F3AD1}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Requirements", "Requirements", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "JsonData", "JsonData", "{E0F8BF1D-D589-4661-BB21-F73ADF6DE37F}"
+	ProjectSection(SolutionItems) = preProject
+		DoctorExample.txt = DoctorExample.txt
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,6 +37,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{8550FAA4-BA3F-42D5-9CAC-EE03AE33F5AE} = {D193125F-86C2-4314-9C92-9C6B953931CC}
 		{F3827B74-9451-4FB7-83F9-D5F5173F3AD1} = {D193125F-86C2-4314-9C92-9C6B953931CC}
+		{E0F8BF1D-D589-4661-BB21-F73ADF6DE37F} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B257EF3B-C169-488F-A3D7-E1697142B6FC}
