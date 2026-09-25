@@ -1,6 +1,21 @@
+using Doccure.ReviewService.Services.ReviewServices;
+using Doccure.ReviewService.Settings;
+using Microsoft.Extensions.Options;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+builder.Services.Configure<DatabaseSettings>(
+    builder.Configuration.GetSection("DatabaseSettingsKey"));
+
+builder.Services.AddSingleton<IDatabaseSettings>(sp =>
+    sp.GetRequiredService<IOptions<DatabaseSettings>>().Value);
+
+
+builder.Services.AddAutoMapper(typeof(Program));
+
+builder.Services.AddScoped<IReviewService, ReviewService>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
