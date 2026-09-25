@@ -7,6 +7,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Microservices", "Microservi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Doccure.BranchService", "Microservices\Doccure.BranchService\Doccure.BranchService.csproj", "{8550FAA4-BA3F-42D5-9CAC-EE03AE33F5AE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Doccure.DoctorService", "Microservices\Doccure.DoctorService\Doccure.DoctorService.csproj", "{F3827B74-9451-4FB7-83F9-D5F5173F3AD1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,12 +19,17 @@ Global
 		{8550FAA4-BA3F-42D5-9CAC-EE03AE33F5AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8550FAA4-BA3F-42D5-9CAC-EE03AE33F5AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8550FAA4-BA3F-42D5-9CAC-EE03AE33F5AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3827B74-9451-4FB7-83F9-D5F5173F3AD1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3827B74-9451-4FB7-83F9-D5F5173F3AD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3827B74-9451-4FB7-83F9-D5F5173F3AD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3827B74-9451-4FB7-83F9-D5F5173F3AD1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{8550FAA4-BA3F-42D5-9CAC-EE03AE33F5AE} = {D193125F-86C2-4314-9C92-9C6B953931CC}
+		{F3827B74-9451-4FB7-83F9-D5F5173F3AD1} = {D193125F-86C2-4314-9C92-9C6B953931CC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B257EF3B-C169-488F-A3D7-E1697142B6FC}
