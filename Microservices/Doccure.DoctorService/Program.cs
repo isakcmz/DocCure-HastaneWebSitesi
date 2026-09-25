@@ -1,6 +1,21 @@
+using Doccure.DoctorService.Services.DoctorServices;
+using Doccure.DoctorService.Settings;
+using Microsoft.Extensions.Options;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+builder.Services.Configure<DatabaseSettings>(
+    builder.Configuration.GetSection("DatabaseSettingsKey"));
+
+builder.Services.AddSingleton<IDatabaseSettings>(sp =>
+    sp.GetRequiredService<IOptions<DatabaseSettings>>().Value);
+
+
+builder.Services.AddAutoMapper(typeof(Program));
+
+builder.Services.AddScoped<IDoctorService, DoctorService>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

@@ -1,32 +1,53 @@
-﻿using Doccure.DoctorService.Dtos.DoctorDtos;
+﻿using AutoMapper;
+using Doccure.DoctorService.Dtos.DoctorDtos;
+using Doccure.DoctorService.Entities;
+using Doccure.DoctorService.Settings;
+using MongoDB.Driver;
 
 namespace Doccure.DoctorService.Services.DoctorServices
 {
     public class DoctorService : IDoctorService
     {
-        public Task CreateAsync(CreateDoctorDto dto)
+        private readonly IMongoCollection<Doctor> _doctorCollection;
+        private readonly IMapper _mapper;
+
+        public DoctorService(IMapper mapper, IDatabaseSettings settings)
         {
-            throw new NotImplementedException();
+            _mapper = mapper;
+
+            var client = new MongoClient(settings.ConnectionString);
+            var database = client.GetDatabase(settings.DatabaseName);
+            _doctorCollection = database.GetCollection<Doctor>(settings.DoctorCollectionName);
         }
 
-        public Task DeleteAsync(string id)
+        public async Task CreateAsync(CreateDoctorDto dto)
         {
-            throw new NotImplementedException();
+            var value = _mapper.Map<Doctor>(dto);
+
+            await _doctorCollection.InsertOneAsync(value);
         }
 
-        public Task<List<ResultDoctorDto>> GetAllAsync()
+        public async Task DeleteAsync(string id)
         {
-            throw new NotImplementedException();
+            await _doctorCollection.DeleteOneAsync(x => x.DoctorId == id);
         }
 
-        public Task<GetDoctorByIdDto> GetByIdAsync()
+        public async Task<List<ResultDoctorDto>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            var values = await _doctorCollection.Find(x => true).ToListAsync();
+            return _mapper.Map<List<ResultDoctorDto>>(values);
         }
 
-        public Task UpdateAsync(UpdateDoctorDto dto)
+        public async Task<GetDoctorByIdDto> GetByIdAsync(string id)
         {
-            throw new NotImplementedException();
+            var value = await _doctorCollection.Find(x => x.DoctorId == id).FirstOrDefaultAsync();
+            return _mapper.Map<GetDoctorByIdDto>(value);
+        }
+
+        public async Task UpdateAsync(UpdateDoctorDto dto)
+        {
+            var value = _mapper.Map<Doctor>(dto);
+            await _doctorCollection.ReplaceOneAsync(x => x.DoctorId == dto.DoctorId, value);
         }
     }
 }
