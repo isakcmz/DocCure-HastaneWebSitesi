@@ -23,7 +23,6 @@ namespace Doccure.DoctorService.Services.DoctorServices
         public async Task CreateAsync(CreateDoctorDto dto)
         {
             var value = _mapper.Map<Doctor>(dto);
-
             await _doctorCollection.InsertOneAsync(value);
         }
 
