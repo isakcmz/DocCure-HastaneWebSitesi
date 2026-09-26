@@ -14,6 +14,8 @@
         public bool IsFirstVisit { get; set; }
         public DateTime? CompletedDate { get; set; }
 
+        public Appointment Appointment { get; set; }
+
 
     }
 }

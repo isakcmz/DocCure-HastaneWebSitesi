@@ -9,5 +9,9 @@
         public string Status { get; set; }
         public decimal Price { get; set; }
         public DateTime CreatedDate { get; set; }
+
+        public AppointmentDetail AppointmentDetail { get; set; }
+        public List<DoctorSchedule> DoctorSchedules { get; set; }
+
     }
 }
