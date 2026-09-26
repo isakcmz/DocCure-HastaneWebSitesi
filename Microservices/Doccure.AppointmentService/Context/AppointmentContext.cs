@@ -7,7 +7,7 @@ namespace Doccure.AppointmentService.Context
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=LAPTOP-SPG6ILB4\\SQLEXPRESS;inital catalog=DoccureAppointmentDb;integrated security=true;");
+            optionsBuilder.UseSqlServer("Server=LAPTOP-SPG6ILB4\\SQLEXPRESS;initial catalog=DoccureAppointmentDb;integrated security=true;");
         }
 
         public DbSet<Appointment> Appointments { get; set; }

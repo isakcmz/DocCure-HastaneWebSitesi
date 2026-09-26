@@ -1,6 +1,14 @@
+using Doccure.AppointmentService.Context;
+using Doccure.AppointmentService.Services.AppointmentServices;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+builder.Services.AddAutoMapper(typeof(Program));
+
+builder.Services.AddScoped<IAppointmentService, AppointmentService>();
+builder.Services.AddDbContext<AppointmentContext>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
