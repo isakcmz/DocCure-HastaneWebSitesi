@@ -18,6 +18,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "JsonData", "JsonData", "{E0
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Doccure.ReviewService", "Microservices\Doccure.ReviewService\Doccure.ReviewService.csproj", "{E73FE620-16DD-4EDA-A4B8-EAB1A1F71950}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Doccure.AppointmentService", "Microservices\Doccure.AppointmentService\Doccure.AppointmentService.csproj", "{594D8E42-8B59-4FDE-A24E-AA12B43C53CE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,6 +38,10 @@ Global
 		{E73FE620-16DD-4EDA-A4B8-EAB1A1F71950}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E73FE620-16DD-4EDA-A4B8-EAB1A1F71950}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E73FE620-16DD-4EDA-A4B8-EAB1A1F71950}.Release|Any CPU.Build.0 = Release|Any CPU
+		{594D8E42-8B59-4FDE-A24E-AA12B43C53CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{594D8E42-8B59-4FDE-A24E-AA12B43C53CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{594D8E42-8B59-4FDE-A24E-AA12B43C53CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{594D8E42-8B59-4FDE-A24E-AA12B43C53CE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -45,6 +51,7 @@ Global
 		{F3827B74-9451-4FB7-83F9-D5F5173F3AD1} = {D193125F-86C2-4314-9C92-9C6B953931CC}
 		{E0F8BF1D-D589-4661-BB21-F73ADF6DE37F} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{E73FE620-16DD-4EDA-A4B8-EAB1A1F71950} = {D193125F-86C2-4314-9C92-9C6B953931CC}
+		{594D8E42-8B59-4FDE-A24E-AA12B43C53CE} = {D193125F-86C2-4314-9C92-9C6B953931CC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B257EF3B-C169-488F-A3D7-E1697142B6FC}
