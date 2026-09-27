@@ -24,7 +24,7 @@ namespace Doccure.PrescriptionService.Services.PrescriptionService
                 AppointmentId = dto.AppointmentId,
                 DoctorId = dto.DoctorId,
                 PatientId = dto.PatientId,
-                CreatedDate = DateTime.Now,
+                CreatedDate = DateTime.UtcNow,
 
                 PrescriptionItems = dto.PrescriptionItems.Select(x => new PrescriptionItem
                 {
