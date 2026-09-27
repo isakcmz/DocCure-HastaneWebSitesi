@@ -9,6 +9,6 @@ namespace Doccure.PrescriptionService.Dtos.PrescriptionDtos
         public string DoctorId { get; set; }
         public string PatientId { get; set; }
         public DateTime CreatedDate { get; set; }
-        public List<PrescriptionItem> PrescriptionItems { get; set; }
+        public List<PrescriptionItemDto> PrescriptionItems { get; set; }
     }
 }

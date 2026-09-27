@@ -7,6 +7,6 @@ namespace Doccure.PrescriptionService.Dtos.PrescriptionDtos
         public int AppointmentId { get; set; }
         public string DoctorId { get; set; }
         public string PatientId { get; set; }
-        public List<PrescriptionItem> PrescriptionItems { get; set; }
+        public List<PrescriptionItemDto> PrescriptionItems { get; set; }
     }
 }
