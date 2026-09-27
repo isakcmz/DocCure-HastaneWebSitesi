@@ -1,6 +1,11 @@
 ﻿using Doccure.IdentityService.Dtos;
 using Doccure.IdentityService.Entities;
 using Microsoft.AspNetCore.Identity;
+using System.Text;
+using System.Security.Claims;
+using System.IdentityModel.Tokens.Jwt;
+using Microsoft.IdentityModel.Tokens;
+
 
 namespace Doccure.IdentityService.Services
 {
@@ -8,11 +13,13 @@ namespace Doccure.IdentityService.Services
     {
         private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> _signInManager;
+        private readonly IConfiguration _configuration;
 
-        public AuthService(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager)
+        public AuthService(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, IConfiguration configuration)
         {
-            this._userManager = userManager;
+            _userManager = userManager;
             _signInManager = signInManager;
+            _configuration = configuration;
         }
 
 
@@ -34,18 +41,54 @@ namespace Doccure.IdentityService.Services
 
 
 
-        public async Task<bool> LoginAsync(LoginDto dto)
+
+
+        public async Task<string?> LoginAsync(LoginDto dto)
         {
             var user = await _userManager.FindByEmailAsync(dto.Email);
 
-            if(user == null)
-                return false;
+            if (user == null)
+                return null;
 
             var result = await _signInManager.CheckPasswordSignInAsync(user, dto.Password, false);
 
-            return result.Succeeded;
+            if (!result.Succeeded)
+                return null;
+
+            return GenerateToken(user);
         }
 
+
+
+
+
+
+        public string GenerateToken(AppUser user)
+        {
+            var jwtSettings = _configuration.GetSection("Jwt");
+
+            var claims = new List<Claim>
+            {
+                new Claim(ClaimTypes.NameIdentifier, user.Id),
+                new Claim(ClaimTypes.Email, user.Email ?? ""),
+                new Claim("name", user.Name ?? ""),
+                new Claim("surname", user.Surname ?? "")
+            };
+
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings["Key"]!));
+
+            var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+
+            var token = new JwtSecurityToken(
+                issuer: jwtSettings["Issuer"],
+                audience: jwtSettings["Audience"],
+                claims: claims,
+                expires: DateTime.UtcNow.AddMinutes(int.Parse(jwtSettings["ExpireMinutes"]!)),
+                signingCredentials: credentials
+            );
+
+            return new JwtSecurityTokenHandler().WriteToken(token);
+        }
 
 
     }
