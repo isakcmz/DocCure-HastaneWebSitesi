@@ -21,12 +21,12 @@ namespace Doccure.IdentityService.Controllers
         [HttpPost]
         public async Task<IActionResult> UserLogin(LoginDto dto)
         {
-            var result = await _authService.LoginAsync(dto);
+            var token = await _authService.LoginAsync(dto);
 
-            if (!result)
-                return BadRequest("Email veya Şifre hatalı");
+            if (token == null)
+                return Unauthorized("Email veya Şifre hatalı");
 
-            return Ok("Giriş başarılı");
+            return Ok(new { token });
         }
     }
 }
