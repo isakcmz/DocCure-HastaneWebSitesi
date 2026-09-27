@@ -1,5 +1,4 @@
-﻿﻿
-<head>
+﻿<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DocCure – Hastane Yönetim Sistemi</title>
@@ -9,8 +8,8 @@
     <style>
 
         /* ━━━━━━━━━━━━━━━━━━━━━━━━━━
-                           TOKENS
-                           ━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+                   TOKENS
+                   ━━━━━━━━━━━━━━━━━━━━━━━━━━ */
         :root {
             --primary: #3B82F6;
             --primary-dk: #1D4ED8;
@@ -36,8 +35,8 @@
         }
 
         /* ━━━━━━━━━━━━━━━━━━━━━━━━━━
-                           RESET
-                           ━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+                   RESET
+                   ━━━━━━━━━━━━━━━━━━━━━━━━━━ */
         *, *::before, *::after {
             box-sizing: border-box;
             margin: 0;
@@ -72,16 +71,16 @@
         }
 
         /* ━━━━━━━━━━━━━━━━━━━━━━━━━━
-                           LAYOUT
-                           ━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+                   LAYOUT
+                   ━━━━━━━━━━━━━━━━━━━━━━━━━━ */
         .layout {
             display: flex;
             min-height: 100vh;
         }
 
         /* ━━━━━━━━━━━━━━━━━━━━━━━━━━
-                           SIDEBAR
-                           ━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+                   SIDEBAR
+                   ━━━━━━━━━━━━━━━━━━━━━━━━━━ */
         #sidebar {
             position: fixed;
             top: 0;
@@ -349,8 +348,8 @@
         }
 
         /* ━━━━━━━━━━━━━━━━━━━━━━━━━━
-                           MAIN
-                           ━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+                   MAIN
+                   ━━━━━━━━━━━━━━━━━━━━━━━━━━ */
         #main {
             flex: 1;
             margin-left: var(--sidebar-w);
@@ -365,8 +364,8 @@
         }
 
         /* ━━━━━━━━━━━━━━━━━━━━━━━━━━
-                           TOPBAR
-                           ━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+                   TOPBAR
+                   ━━━━━━━━━━━━━━━━━━━━━━━━━━ */
         #topbar {
             position: sticky;
             top: 0;
@@ -552,15 +551,17 @@
                 animation: pulse 2s infinite;
                 flex-shrink: 0;
             }
-
         @@keyframes pulse {
-            0%, 100% {
-                box-shadow: 0 0 0 2px rgba(16,185,129,.2);
-            }
+            0%, 100%
 
-            50% {
-                box-shadow: 0 0 0 5px rgba(16,185,129,.08);
-            }
+        {
+            box-shadow: 0 0 0 2px rgba(16,185,129,.2);
+        }
+
+        50% {
+            box-shadow: 0 0 0 5px rgba(16,185,129,.08);
+        }
+
         }
 
         /* Emergency btn */
@@ -643,8 +644,8 @@
         }
 
         /* ━━━━━━━━━━━━━━━━━━━━━━━━━━
-                           DROPDOWN
-                           ━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+                   DROPDOWN
+                   ━━━━━━━━━━━━━━━━━━━━━━━━━━ */
         .dropdown-menu {
             border: 1px solid var(--border);
             border-radius: var(--radius-sm);
@@ -684,8 +685,8 @@
         }
 
         /* ━━━━━━━━━━━━━━━━━━━━━━━━━━
-                           CONTENT
-                           ━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+                   CONTENT
+                   ━━━━━━━━━━━━━━━━━━━━━━━━━━ */
         #app-content {
             flex: 1;
             padding: 28px;
@@ -693,8 +694,8 @@
         }
 
         /* ━━━━━━━━━━━━━━━━━━━━━━━━━━
-                           TOAST
-                           ━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+                   TOAST
+                   ━━━━━━━━━━━━━━━━━━━━━━━━━━ */
         #toast-host {
             position: fixed;
             bottom: 20px;
@@ -727,29 +728,33 @@
             .toast-item.out {
                 animation: toastOut .22s var(--ease) both;
             }
-
         @@keyframes toastIn {
-            from {
-                opacity: 0;
-                transform: translateX(28px);
-            }
+            from
 
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
+        {
+            opacity: 0;
+            transform: translateX(28px);
         }
 
-        @@keyframes toastOut {
-            from {
-                opacity: 1;
-                transform: translateX(0);
-            }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
 
-            to {
-                opacity: 0;
-                transform: translateX(28px);
-            }
+        }
+        @@keyframes toastOut {
+            from
+
+        {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        to {
+            opacity: 0;
+            transform: translateX(28px);
+        }
+
         }
 
         .toast-item.success {
@@ -795,8 +800,8 @@
         }
 
         /* ━━━━━━━━━━━━━━━━━━━━━━━━━━
-                           BACKDROP (mobile)
-                           ━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+                   BACKDROP (mobile)
+                   ━━━━━━━━━━━━━━━━━━━━━━━━━━ */
         #sb-backdrop {
             display: none;
             position: fixed;
@@ -810,52 +815,57 @@
             }
 
         /* ━━━━━━━━━━━━━━━━━━━━━━━━━━
-                           RESPONSIVE
-                           ━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+                   RESPONSIVE
+                   ━━━━━━━━━━━━━━━━━━━━━━━━━━ */
         @@media (max-width: 991px) {
-            #sidebar {
-                transform: translateX(-100%);
-                width: var(--sidebar-w) !important;
-            }
+            #sidebar
 
-                #sidebar.open {
-                    transform: translateX(0);
-                }
-
-            #main {
-                margin-left: 0 !important;
-            }
-
-            #app-content {
-                padding: 18px 14px;
-            }
-
-            .tb-search-wrap {
-                display: none;
-            }
-
-            .tb-status-chip {
-                display: none;
-            }
-
-            .tb-date {
-                display: none;
-            }
+        {
+            transform: translateX(-100%);
+            width: var(--sidebar-w) !important;
         }
 
+        #sidebar.open {
+            transform: translateX(0);
+        }
+
+        #main {
+            margin-left: 0 !important;
+        }
+
+        #app-content {
+            padding: 18px 14px;
+        }
+
+        .tb-search-wrap {
+            display: none;
+        }
+
+        .tb-status-chip {
+            display: none;
+        }
+
+        .tb-date {
+            display: none;
+        }
+
+        }
         @@media (max-width: 575px) {
-            .tb-emergency-btn {
-                display: none;
-            }
+            .tb-emergency-btn
 
-            .tb-profile-name, .tb-profile-role {
-                display: none;
-            }
+        {
+            display: none;
+        }
 
-            #topbar {
-                padding: 0 12px;
-                gap: 6px;
-            }
+        .tb-profile-name, .tb-profile-role {
+            display: none;
+        }
+
+        #topbar {
+            padding: 0 12px;
+            gap: 6px;
+        }
+
         }
     </style>
 </head>
