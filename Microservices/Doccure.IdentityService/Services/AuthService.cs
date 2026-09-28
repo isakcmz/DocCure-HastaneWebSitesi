@@ -55,7 +55,7 @@ namespace Doccure.IdentityService.Services
             if (!result.Succeeded)
                 return null;
 
-            return GenerateToken(user);
+            return await GenerateToken(user);
         }
 
 
@@ -63,9 +63,11 @@ namespace Doccure.IdentityService.Services
 
 
 
-        public string GenerateToken(AppUser user)
+        public async Task<string> GenerateToken(AppUser user)
         {
             var jwtSettings = _configuration.GetSection("Jwt");
+
+            var roles = await _userManager.GetRolesAsync(user);
 
             var claims = new List<Claim>
             {
@@ -74,6 +76,11 @@ namespace Doccure.IdentityService.Services
                 new Claim("name", user.Name ?? ""),
                 new Claim("surname", user.Surname ?? "")
             };
+
+            foreach(var role in roles)
+            {
+                claims.Add(new Claim(ClaimTypes.Role, role));
+            }
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings["Key"]!));
 
