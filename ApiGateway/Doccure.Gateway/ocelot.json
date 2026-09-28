@@ -6,7 +6,7 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 7241
+          "Port": 7001
         }
       ],
       "UpstreamPathTemplate": "/api/Branches",
