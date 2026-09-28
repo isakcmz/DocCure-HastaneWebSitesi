@@ -28,6 +28,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Frontends", "Frontends", "{
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Doccure.WebUI", "Frontends\Doccure.WebUI\Doccure.WebUI.csproj", "{7B6B81C2-40C1-4BD1-931C-CA1B7512DD1A}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ApiGateway", "ApiGateway", "{B0D909F1-671E-4149-B891-1D8EE3AD1616}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Doccure.Gateway", "ApiGateway\Doccure.Gateway\Doccure.Gateway.csproj", "{35EE23C1-3B80-48E4-BDA1-28C521FA2F46}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -62,6 +66,10 @@ Global
 		{7B6B81C2-40C1-4BD1-931C-CA1B7512DD1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7B6B81C2-40C1-4BD1-931C-CA1B7512DD1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7B6B81C2-40C1-4BD1-931C-CA1B7512DD1A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35EE23C1-3B80-48E4-BDA1-28C521FA2F46}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35EE23C1-3B80-48E4-BDA1-28C521FA2F46}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35EE23C1-3B80-48E4-BDA1-28C521FA2F46}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35EE23C1-3B80-48E4-BDA1-28C521FA2F46}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -75,6 +83,7 @@ Global
 		{7675C684-4B74-45AA-880B-7862980606AD} = {D193125F-86C2-4314-9C92-9C6B953931CC}
 		{23691210-9670-47AE-B52D-3D32C051025E} = {D193125F-86C2-4314-9C92-9C6B953931CC}
 		{7B6B81C2-40C1-4BD1-931C-CA1B7512DD1A} = {A7CED5F0-EFB1-4D38-ABBB-5EE6F9AC2D0B}
+		{35EE23C1-3B80-48E4-BDA1-28C521FA2F46} = {B0D909F1-671E-4149-B891-1D8EE3AD1616}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B257EF3B-C169-488F-A3D7-E1697142B6FC}
