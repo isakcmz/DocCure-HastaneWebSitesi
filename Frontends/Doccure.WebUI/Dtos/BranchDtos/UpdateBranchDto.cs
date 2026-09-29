@@ -1,13 +1,7 @@
-﻿using MongoDB.Bson;
-using MongoDB.Bson.Serialization.Attributes;
-
-namespace Doccure.BranchService.Entities
+﻿namespace Doccure.WebUI.Dtos.BranchDtos
 {
-    public class Branch
+    public class UpdateBranchDto
     {
-        [BsonId]
-        [BsonRepresentation(BsonType.ObjectId)]
-
         public string BranchId { get; set; }
         public string BranchName { get; set; }
         public string Description { get; set; }
