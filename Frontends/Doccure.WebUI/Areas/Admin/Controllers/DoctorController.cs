@@ -2,9 +2,10 @@
 
 namespace Doccure.WebUI.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class DoctorController : Controller
     {
-        [Area("Admin")]
+        
         public IActionResult DoctorList()
         {
             return View();

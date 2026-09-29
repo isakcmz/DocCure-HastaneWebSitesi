@@ -1,8 +1,10 @@
+using Doccure.WebUI.Services.BranchServices;
 using Doccure.WebUI.Services.RegisterServices;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddScoped<IRegisterService, RegisterService>();
+builder.Services.AddScoped<IBranchService, BranchService>();
 builder.Services.AddHttpClient();
 
 // Add services to the container.
