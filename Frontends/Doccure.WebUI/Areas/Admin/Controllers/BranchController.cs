@@ -1,4 +1,5 @@
-﻿using Doccure.WebUI.Services.BranchServices;
+﻿using Doccure.WebUI.Dtos.BranchDtos;
+using Doccure.WebUI.Services.BranchServices;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Doccure.WebUI.Areas.Admin.Controllers
@@ -13,10 +14,33 @@ namespace Doccure.WebUI.Areas.Admin.Controllers
             _branchService = branchService;
         }
 
+
+
+
+
         public async Task<IActionResult> BranchList()
         {
             var values = await _branchService.GetAllBranchAsync();
             return View(values);
+        }
+
+
+
+
+
+
+        [HttpGet]
+        public IActionResult CreateBranch()
+        {
+            return View();
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> CreateBranch(CreateBranchDto createBranchDto)
+        {
+            await _branchService.CreateBranchAsync(createBranchDto);
+            return RedirectToAction("BranchList");
         }
     }
 }

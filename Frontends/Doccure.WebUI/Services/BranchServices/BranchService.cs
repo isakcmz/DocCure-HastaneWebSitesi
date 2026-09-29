@@ -1,5 +1,6 @@
 ﻿using Doccure.WebUI.Dtos.BranchDtos;
 using Newtonsoft.Json;
+using System.Text;
 
 namespace Doccure.WebUI.Services.BranchServices
 {
@@ -14,9 +15,11 @@ namespace Doccure.WebUI.Services.BranchServices
 
 
 
-        public Task CreateBranchAsync(CreateBranchDto dto)
+        public async Task CreateBranchAsync(CreateBranchDto createBranchDto)
         {
-            throw new NotImplementedException();
+            var jsonData = JsonConvert.SerializeObject(createBranchDto);
+            StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
+            await _httpClient.PostAsync("https://localhost:5000/api/Branches", stringContent);
         }
 
         public Task DeleteBranchAsync(string id)
