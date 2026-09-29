@@ -23,7 +23,7 @@ namespace Doccure.WebUI.Services.BranchServices
 
             if(result.IsSuccessStatusCode)
             {
-
+                //işlem
             }
         }
 

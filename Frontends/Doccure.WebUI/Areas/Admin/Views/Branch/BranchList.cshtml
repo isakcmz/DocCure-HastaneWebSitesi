@@ -1477,7 +1477,7 @@
                 Shell.toast(`"${n}" branşı güncellendi.`, 'success', 'bi-check-circle');
             }
 
-            /* ─ Delete ─ */
+            ﻿/* ─ Delete ─ */
             function confirmDelete(name, id, btn) {
                 _delName = name;
                 _delId   = id;
@@ -1489,12 +1489,21 @@
             function execDelete() {
                 close('bc-m-delete');
 
-                // Gerçek API çağrısı için:
-                // fetch(`/Admin/Branch/Delete?id=${_delId}`, { method:'DELETE' })
-                // .then(r => r.json()).then(res => { if(res.success) { _removeCard(); } });
-
-                _removeCard();
-                Shell.toast(`"${_delName}" branşı silindi.`, 'danger', 'bi-trash3');
+                fetch(`/admin/Branch/deletebranch/${_delId}`, {
+                    method: 'POST',
+                    redirect: 'manual'
+                })
+                .then(r => {
+                    if (r.ok || r.type === 'opaqueredirect') {
+                        _removeCard();
+                        Shell.toast(`"${_delName}" branşı silindi.`, 'danger', 'bi-trash3');
+                    } else {
+                        Shell.toast('Silme işlemi başarısız.', 'warning', 'bi-exclamation-circle');
+                    }
+                })
+                .catch(err => {
+                    Shell.toast('Bir hata oluştu.', 'danger', 'bi-x-circle');
+                });
             }
 
             function _removeCard() {
