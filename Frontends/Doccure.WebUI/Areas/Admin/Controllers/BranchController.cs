@@ -52,5 +52,25 @@ namespace Doccure.WebUI.Areas.Admin.Controllers
             await _branchService.DeleteBranchAsync(id);
             return RedirectToAction("BranchList");
         }
+
+
+
+
+
+
+        [HttpGet]
+        public async Task<IActionResult> UpdateBranch(string id)
+        {
+            var value = await _branchService.GetBranchByIdAsync(id);
+            return View(value);
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> UpdateBranch(UpdateBranchDto updateBranchDto)
+        {
+            await _branchService.UpdateBranchAsync(updateBranchDto);
+            return RedirectToAction("BranchList");
+        }
     }
 }

@@ -1173,10 +1173,9 @@
                                 onclick="BC.toggleDocs(@i, '@b.BranchId', this)">
                             <i class="bi bi-people"></i> Doktorlar
                         </button>
-                        <button class="bc-btn"
-                                onclick="BC.openEdit({id:@jId, name:@jName, desc:@jDesc, cat:@jCat, docs:'@b.DoctorCount', code:@jCode})">
+                        <a href="/admin/Branch/UpdateBranch/@b.BranchId" class="bc-btn">
                             <i class="bi bi-pencil"></i> Düzenle
-                        </button>
+                        </a>
                         <button class="bc-btn danger"
                                 onclick="BC.confirmDelete(@jName, @jId, this)">
                             <i class="bi bi-trash3"></i> Sil

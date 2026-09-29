@@ -32,6 +32,7 @@ namespace Doccure.WebUI.Services.BranchServices
             await _httpClient.DeleteAsync($"https://localhost:5000/api/Branches?id={id}");
         }
 
+
         public async Task<List<ResultBranchDto>> GetAllBranchAsync()
         {
             var responseMessage = await _httpClient.GetAsync("https://localhost:5000/api/Branches");
@@ -40,14 +41,28 @@ namespace Doccure.WebUI.Services.BranchServices
             return values;
         }
 
-        public Task<GetBranchByIdDto> GetBranchByIdAsync(string id)
+
+        public async Task<GetBranchByIdDto> GetBranchByIdAsync(string id)
         {
-            throw new NotImplementedException();
+            var responseMessage = await _httpClient.GetAsync($"https://localhost:5000/api/Branches/GetBranch?id={id}");
+
+            if(responseMessage.IsSuccessStatusCode)
+            {
+                var jsonData = await responseMessage.Content.ReadAsStringAsync();
+                var values = JsonConvert.DeserializeObject<GetBranchByIdDto>(jsonData);
+                return values;
+            }
+
+            return null;
         }
 
-        public Task UpdateBranchAsync(UpdateBranchDto dto)
+
+
+        public async Task UpdateBranchAsync(UpdateBranchDto dto)
         {
-            throw new NotImplementedException();
+            var jsonData = JsonConvert.SerializeObject(dto);
+            StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
+            await _httpClient.PutAsync("https://localhost:5000/api/Branches", stringContent);
         }
     }
 }
