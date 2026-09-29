@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Doccure.BranchService.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class BranchesController : ControllerBase
@@ -20,7 +20,7 @@ namespace Doccure.BranchService.Controllers
 
 
 
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public async Task<IActionResult> BranchList()
         {
