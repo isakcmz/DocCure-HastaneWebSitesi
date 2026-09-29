@@ -10,7 +10,7 @@
         }
       ],
       "UpstreamPathTemplate": "/api/Branches",
-      "UpstreamHttpMethod": [ "GET" ]
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE"]
     }
   ],
   "GlobalConfiguration": {

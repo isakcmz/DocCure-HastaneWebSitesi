@@ -19,12 +19,17 @@ namespace Doccure.WebUI.Services.BranchServices
         {
             var jsonData = JsonConvert.SerializeObject(createBranchDto);
             StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            await _httpClient.PostAsync("https://localhost:5000/api/Branches", stringContent);
+            var result = await _httpClient.PostAsync("https://localhost:5000/api/Branches", stringContent);
+
+            if(result.IsSuccessStatusCode)
+            {
+
+            }
         }
 
-        public Task DeleteBranchAsync(string id)
+        public async Task DeleteBranchAsync(string id)
         {
-            throw new NotImplementedException();
+            await _httpClient.DeleteAsync($"https://localhost:5000/api/Branches?id={id}");
         }
 
         public async Task<List<ResultBranchDto>> GetAllBranchAsync()
