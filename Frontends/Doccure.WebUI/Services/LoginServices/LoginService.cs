@@ -17,7 +17,7 @@ namespace Doccure.WebUI.Services.LoginServices
         {
             var jsonData = JsonConvert.SerializeObject(loginDto);
             StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var responseMessage = await _httpClient.PostAsync("https://localhost:5000/api/auth/login", stringContent);
+            var responseMessage = await _httpClient.PostAsync("https://localhost:7170/api/Logins", stringContent);
 
             if(!responseMessage.IsSuccessStatusCode)
             {

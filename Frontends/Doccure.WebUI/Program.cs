@@ -1,4 +1,5 @@
 using Doccure.WebUI.Services.BranchServices;
+using Doccure.WebUI.Services.LoginServices;
 using Doccure.WebUI.Services.RegisterServices;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -6,6 +7,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddScoped<IRegisterService, RegisterService>();
 builder.Services.AddScoped<IBranchService, BranchService>();
 builder.Services.AddHttpClient();
+builder.Services.AddScoped<ILoginService, LoginService>();
+
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -27,19 +30,15 @@ app.UseRouting();
 
 app.UseAuthorization();
 
+
+app.MapControllerRoute(
+    name: "areas",
+    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+);
+
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
-
-
-
-app.UseEndpoints(endpoints =>
-{
-    endpoints.MapControllerRoute(
-      name: "areas",
-      pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
-    );
-});
 
 
 app.Run();
