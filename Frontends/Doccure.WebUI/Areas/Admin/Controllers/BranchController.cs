@@ -15,17 +15,11 @@ namespace Doccure.WebUI.Areas.Admin.Controllers
         }
 
 
-
-
-
         public async Task<IActionResult> BranchList()
         {
             var values = await _branchService.GetAllBranchAsync();
             return View(values);
         }
-
-
-
 
 
 

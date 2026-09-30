@@ -1,4 +1,5 @@
 ﻿using Doccure.WebUI.Dtos.LoginDtos;
+using Doccure.WebUI.Dtos.TokenDtos;
 using Newtonsoft.Json;
 using System.Text;
 
@@ -16,7 +17,7 @@ namespace Doccure.WebUI.Services.LoginServices
         public async Task<string> LoginAsync(LoginDto loginDto)
         {
             var jsonData = JsonConvert.SerializeObject(loginDto);
-            StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
+            var stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
             var responseMessage = await _httpClient.PostAsync("https://localhost:7170/api/Logins", stringContent);
 
             if(!responseMessage.IsSuccessStatusCode)
@@ -24,8 +25,10 @@ namespace Doccure.WebUI.Services.LoginServices
                 return null;
             }
 
-            var token = await responseMessage.Content.ReadAsStringAsync();
-            return token;
+            var responseJson = await responseMessage.Content.ReadAsStringAsync();
+            var tokenResponse = JsonConvert.DeserializeObject<TokenResponseDto>(responseJson);
+
+            return tokenResponse.Token;
         }
     }
 }

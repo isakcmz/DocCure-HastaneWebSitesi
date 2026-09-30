@@ -26,6 +26,7 @@ namespace Doccure.WebUI.Controllers
         {
             var token = await _loginService.LoginAsync(loginDto);
             ViewBag.v = token;
+            HttpContext.Session.SetString("JwtToken", token);
             return RedirectToAction("BranchList", "Branch", new { area = "Admin" });
         }
     }

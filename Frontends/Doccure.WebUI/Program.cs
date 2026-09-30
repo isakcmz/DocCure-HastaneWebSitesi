@@ -8,6 +8,8 @@ builder.Services.AddScoped<IRegisterService, RegisterService>();
 builder.Services.AddScoped<IBranchService, BranchService>();
 builder.Services.AddHttpClient();
 builder.Services.AddScoped<ILoginService, LoginService>();
+builder.Services.AddSession();
+builder.Services.AddHttpContextAccessor();
 
 
 // Add services to the container.
@@ -29,6 +31,8 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+
+app.UseSession();
 
 
 app.MapControllerRoute(
