@@ -1,18 +1,17 @@
-﻿using Doccure.WebUI.Dtos.BranchDtos;
-using Microsoft.AspNetCore.Mvc;
+﻿using Doccure.WebUI.Dtos.DoctorDtos;
 using Newtonsoft.Json;
 using System.Net;
 using System.Net.Http.Headers;
 using System.Text;
 
-namespace Doccure.WebUI.Services.BranchServices
+namespace Doccure.WebUI.Services.DoctorServices
 {
-    public class BranchService : IBranchService
+    public class DoctorService : IDoctorService
     {
         private readonly HttpClient _httpClient;
         private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public BranchService(HttpClient httpClient, IHttpContextAccessor httpContextAccessor)
+        public DoctorService(HttpClient httpClient, IHttpContextAccessor httpContextAccessor)
         {
             _httpClient = httpClient;
             _httpContextAccessor = httpContextAccessor;
@@ -20,69 +19,71 @@ namespace Doccure.WebUI.Services.BranchServices
 
 
 
-        public async Task CreateBranchAsync(CreateBranchDto createBranchDto)
+        public async Task CreateDoctorAsync(CreateDoctorDto createDoctorDto)
         {
             PrepareAuthorizationHeader();
 
-            var jsonData = JsonConvert.SerializeObject(createBranchDto);
+            var jsonData = JsonConvert.SerializeObject(createDoctorDto);
             StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var responseMessage = await _httpClient.PostAsync("https://localhost:5000/api/Branches", stringContent);
-
-            await HandleResponseErrors(responseMessage);
-
-        }
-
-        public async Task DeleteBranchAsync(string id)
-        {
-            PrepareAuthorizationHeader();
-            var responseMessage = await _httpClient.DeleteAsync($"https://localhost:5000/api/Branches?id={id}");
-            await HandleResponseErrors(responseMessage);
-        }
-
-
-        public async Task<List<ResultBranchDto>> GetAllBranchAsync()
-        {
-            PrepareAuthorizationHeader();
-
-            // Gateway üzerinden isteği gönder
-            var responseMessage = await _httpClient.GetAsync("https://localhost:5000/api/Branches");
-
-            await HandleResponseErrors(responseMessage);
-
-            // Gelen JSON veriyi oku
-            var jsonData = await responseMessage.Content.ReadAsStringAsync();
+            var responseMessage = await _httpClient.PostAsync("https://localhost:5000/api/Doctors", stringContent);
             
-            // DTO listesine çevir
-            var values = JsonConvert.DeserializeObject<List<ResultBranchDto>>(jsonData);
-            
-            return values;
+            await HandleResponseErrors(responseMessage);
         }
 
 
-        public async Task<GetBranchByIdDto> GetBranchByIdAsync(string id)
+        public async Task DeleteDoctorAsync(string id)
         {
             PrepareAuthorizationHeader();
 
-            var responseMessage = await _httpClient.GetAsync($"https://localhost:5000/api/Branches/GetBranch?id={id}");
+            var responseMessage = await _httpClient.DeleteAsync($"https://localhost:5000/api/Doctors?id={id}");
+
+            await HandleResponseErrors(responseMessage);
+        }
+
+
+        public async Task<List<ResultDoctorDto>> GetAllDoctorsAsync()
+        {
+            PrepareAuthorizationHeader();
+
+            var responseMessage = await _httpClient.GetAsync("https://localhost:5000/api/Doctors");
 
             await HandleResponseErrors(responseMessage);
 
             var jsonData = await responseMessage.Content.ReadAsStringAsync();
-            var values = JsonConvert.DeserializeObject<GetBranchByIdDto>(jsonData);
-            
+            var values = JsonConvert.DeserializeObject<List<ResultDoctorDto>>(jsonData);
+
             return values;
         }
 
 
-
-        public async Task UpdateBranchAsync(UpdateBranchDto dto)
+        public async Task<GetDoctorByIdDto> GetDoctorByIdAsync(string id)
         {
             PrepareAuthorizationHeader();
-            var jsonData = JsonConvert.SerializeObject(dto);
+
+            var responseMessage = await _httpClient.GetAsync($"https://localhost:5000/api/Doctors/{id}");
+
+            await HandleResponseErrors(responseMessage);
+
+            var jsonData = await responseMessage.Content.ReadAsStringAsync();
+            var value = JsonConvert.DeserializeObject<GetDoctorByIdDto>(jsonData);
+
+            return value;
+        }
+
+
+        public async Task UpdateDoctorAsync(UpdateDoctorDto updateDoctorDto)
+        {
+            PrepareAuthorizationHeader();
+
+            var jsonData = JsonConvert.SerializeObject(updateDoctorDto);
             StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var responseMessage = await _httpClient.PutAsync("https://localhost:5000/api/Branches", stringContent);
+            var responseMessage = await _httpClient.PutAsync("https://localhost:5000/api/Doctors", stringContent);
+
             await HandleResponseErrors(responseMessage);
         }
+
+
+
 
 
 
