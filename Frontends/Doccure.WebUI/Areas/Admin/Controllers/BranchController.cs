@@ -17,8 +17,21 @@ namespace Doccure.WebUI.Areas.Admin.Controllers
 
         public async Task<IActionResult> BranchList()
         {
-            var values = await _branchService.GetAllBranchAsync();
-            return View(values);
+            try
+            {
+                var values = await _branchService.GetAllBranchAsync();
+                return View(values);
+            }
+
+            catch(UnauthorizedAccessException ex)
+            {
+                if(ex.Message == "403")
+                {
+                    return RedirectToAction("Forbidden403", "Error", new { area = "" });
+                }
+
+                return RedirectToAction("SignIn", "Login", new { area = ""});
+            }
         }
 
 

@@ -1,4 +1,5 @@
 ﻿using Doccure.WebUI.Dtos.BranchDtos;
+using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Net.Http.Headers;
 using System.Text;
@@ -48,7 +49,22 @@ namespace Doccure.WebUI.Services.BranchServices
 
             // Gateway üzerinden isteği gönder
             var responseMessage = await _httpClient.GetAsync("https://localhost:5000/api/Branches");
-            
+
+
+            // 403 Forbidden
+            if(responseMessage.StatusCode == System.Net.HttpStatusCode.Forbidden)
+            {
+                throw new UnauthorizedAccessException("403");
+            }
+
+            // 401 Unauthorized
+            if (responseMessage.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+            {
+                throw new UnauthorizedAccessException("401");
+            }
+
+
+
             // Gelen JSON veriyi oku
             var jsonData = await responseMessage.Content.ReadAsStringAsync();
             
