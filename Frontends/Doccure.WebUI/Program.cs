@@ -30,9 +30,11 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-app.UseAuthorization();
+app.UseStatusCodePagesWithReExecute("/Error/NotFound404");
 
 app.UseSession();
+
+app.UseAuthorization();
 
 
 app.MapControllerRoute(
