@@ -1,6 +1,7 @@
 ﻿using Doccure.WebUI.Dtos.BranchDtos;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using System.Net;
 using System.Net.Http.Headers;
 using System.Text;
 
@@ -21,49 +22,32 @@ namespace Doccure.WebUI.Services.BranchServices
 
         public async Task CreateBranchAsync(CreateBranchDto createBranchDto)
         {
+            PrepareAuthorizationHeader();
+
             var jsonData = JsonConvert.SerializeObject(createBranchDto);
             StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var result = await _httpClient.PostAsync("https://localhost:5000/api/Branches", stringContent);
+            var responseMessage = await _httpClient.PostAsync("https://localhost:5000/api/Branches", stringContent);
 
-            if(result.IsSuccessStatusCode)
-            {
-                //işlem
-            }
+            await HandleResponseError(responseMessage);
+
         }
 
         public async Task DeleteBranchAsync(string id)
         {
-            await _httpClient.DeleteAsync($"https://localhost:5000/api/Branches?id={id}");
+            PrepareAuthorizationHeader();
+            var responseMessage = await _httpClient.DeleteAsync($"https://localhost:5000/api/Branches?id={id}");
+            await HandleResponseError(responseMessage);
         }
 
 
         public async Task<List<ResultBranchDto>> GetAllBranchAsync()
         {
-            // Session içinden JWT token al
-            var token = _httpContextAccessor.HttpContext.Session.GetString("JwtToken");
-
-            token = token.Trim().Replace("\"", "");
-
-            // Bearer token al
-            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+            PrepareAuthorizationHeader();
 
             // Gateway üzerinden isteği gönder
             var responseMessage = await _httpClient.GetAsync("https://localhost:5000/api/Branches");
 
-
-            // 403 Forbidden
-            if(responseMessage.StatusCode == System.Net.HttpStatusCode.Forbidden)
-            {
-                throw new UnauthorizedAccessException("403");
-            }
-
-            // 401 Unauthorized
-            if (responseMessage.StatusCode == System.Net.HttpStatusCode.Unauthorized)
-            {
-                throw new UnauthorizedAccessException("401");
-            }
-
-
+            await HandleResponseError(responseMessage);
 
             // Gelen JSON veriyi oku
             var jsonData = await responseMessage.Content.ReadAsStringAsync();
@@ -77,25 +61,69 @@ namespace Doccure.WebUI.Services.BranchServices
 
         public async Task<GetBranchByIdDto> GetBranchByIdAsync(string id)
         {
+            PrepareAuthorizationHeader();
+
             var responseMessage = await _httpClient.GetAsync($"https://localhost:5000/api/Branches/GetBranch?id={id}");
 
-            if(responseMessage.IsSuccessStatusCode)
-            {
-                var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<GetBranchByIdDto>(jsonData);
-                return values;
-            }
+            await HandleResponseError(responseMessage);
 
-            return null;
+            var jsonData = await responseMessage.Content.ReadAsStringAsync();
+            var values = JsonConvert.DeserializeObject<GetBranchByIdDto>(jsonData);
+            
+            return values;
         }
 
 
 
         public async Task UpdateBranchAsync(UpdateBranchDto dto)
         {
+            PrepareAuthorizationHeader();
             var jsonData = JsonConvert.SerializeObject(dto);
             StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            await _httpClient.PutAsync("https://localhost:5000/api/Branches", stringContent);
+            var responseMessage = await _httpClient.PutAsync("https://localhost:5000/api/Branches", stringContent);
+            await HandleResponseError(responseMessage);
+        }
+
+
+
+
+        private void PrepareAuthorizationHeader()
+        {
+            // Session içinden JWT token al
+            var token = _httpContextAccessor.HttpContext.Session.GetString("JwtToken");
+
+            token = token?.Trim().Replace("\"", "");
+
+            // Bearer token al
+            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+        }
+
+
+
+
+        public async Task HandleResponseError(HttpResponseMessage responseMessage)
+        {
+
+            if (responseMessage.StatusCode == HttpStatusCode.Forbidden)
+            {
+                throw new UnauthorizedAccessException("403");
+            }
+
+            if (responseMessage.StatusCode == HttpStatusCode.Unauthorized)
+            {
+                throw new UnauthorizedAccessException("401");
+            }
+
+            if (responseMessage.StatusCode == HttpStatusCode.NotFound)
+            {
+                throw new Exception("404");
+            }
+
+            if (!responseMessage.IsSuccessStatusCode)
+            {
+                throw new Exception("Bir hata oluştu!");
+            }
+
         }
     }
 }

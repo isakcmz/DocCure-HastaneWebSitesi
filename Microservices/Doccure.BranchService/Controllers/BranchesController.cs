@@ -29,7 +29,7 @@ namespace Doccure.BranchService.Controllers
         }
 
 
-
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> CreateBranch(CreateBranchDto createBranchDto)
         {
@@ -38,7 +38,7 @@ namespace Doccure.BranchService.Controllers
         }
 
 
-
+        [Authorize(Roles = "Admin")]
         [HttpDelete]
         public async Task<IActionResult> DeleteBranch(string id)
         {
@@ -47,7 +47,7 @@ namespace Doccure.BranchService.Controllers
         }
 
 
-
+        [Authorize(Roles = "Admin")]
         [HttpPut]
         public async Task<IActionResult> UpdateBranch(UpdateBranchDto updateBranchDto)
         {

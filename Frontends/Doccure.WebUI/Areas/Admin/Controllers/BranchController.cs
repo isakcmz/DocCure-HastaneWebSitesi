@@ -79,5 +79,8 @@ namespace Doccure.WebUI.Areas.Admin.Controllers
             await _branchService.UpdateBranchAsync(updateBranchDto);
             return RedirectToAction("BranchList");
         }
+
+
+
     }
 }
