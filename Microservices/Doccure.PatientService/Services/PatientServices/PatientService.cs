@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Doccure.PatientService.Context;
+using Doccure.PatientService.Dtos.IdentityDtos;
 using Doccure.PatientService.Dtos.PatientDtos;
 using Microsoft.EntityFrameworkCore;
 
@@ -21,8 +22,42 @@ namespace Doccure.PatientService.Services.PatientServices
 
         public async Task<List<ResultPatientDto>> GetAllPatientAsync()
         {
-            var values = await _context.Patients.ToListAsync();
-            return _mapper.Map<List<ResultPatientDto>>(values);
+            var patients = await _context.Patients.ToListAsync();
+
+            var result = new List<ResultPatientDto>();
+
+            foreach (var patient in patients)
+            {
+                var identityUser = await _httpClient
+                    .GetFromJsonAsync<IdentityUserDto>(
+                        $"https://localhost:7225/api/users/{patient.AppUserId}");
+
+                var dto = new ResultPatientDto
+                {
+                    PatientId = patient.PatientId,
+                    AppUserId = patient.AppUserId,
+                    TcKimlikNo = patient.TcKimlikNo,
+                    InsuranceType = patient.InsuranceType,
+                    CreatedDate = patient.CreatedDate,
+                    Status = patient.Status,
+
+                    Name = identityUser.Name,
+                    Surname = identityUser.Surname,
+                    FullName = $"{identityUser.Name} {identityUser.Surname}",
+                    Email = identityUser.Email,
+                    PhoneNumber = identityUser.PhoneNumber,
+                    Gender = identityUser.Gender,
+                    BirthDate = identityUser.BirthDate,
+                    BloodGroup = identityUser.BloodGroup,
+                    ImageUrl = identityUser.ImageUrl,
+                    City = identityUser.City,
+                    Address = identityUser.Address
+                };
+
+                result.Add(dto);
+            }
+
+            return result;
         }
     }
 }
