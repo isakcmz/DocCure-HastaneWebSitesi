@@ -32,6 +32,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ApiGateway", "ApiGateway", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Doccure.Gateway", "ApiGateway\Doccure.Gateway\Doccure.Gateway.csproj", "{35EE23C1-3B80-48E4-BDA1-28C521FA2F46}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Doccure.PatientService", "Microservices\Doccure.PatientService\Doccure.PatientService.csproj", "{F4860277-56C0-40FF-8643-9935A1E23251}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -70,6 +72,10 @@ Global
 		{35EE23C1-3B80-48E4-BDA1-28C521FA2F46}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{35EE23C1-3B80-48E4-BDA1-28C521FA2F46}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{35EE23C1-3B80-48E4-BDA1-28C521FA2F46}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4860277-56C0-40FF-8643-9935A1E23251}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4860277-56C0-40FF-8643-9935A1E23251}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4860277-56C0-40FF-8643-9935A1E23251}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4860277-56C0-40FF-8643-9935A1E23251}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -84,6 +90,7 @@ Global
 		{23691210-9670-47AE-B52D-3D32C051025E} = {D193125F-86C2-4314-9C92-9C6B953931CC}
 		{7B6B81C2-40C1-4BD1-931C-CA1B7512DD1A} = {A7CED5F0-EFB1-4D38-ABBB-5EE6F9AC2D0B}
 		{35EE23C1-3B80-48E4-BDA1-28C521FA2F46} = {B0D909F1-671E-4149-B891-1D8EE3AD1616}
+		{F4860277-56C0-40FF-8643-9935A1E23251} = {D193125F-86C2-4314-9C92-9C6B953931CC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B257EF3B-C169-488F-A3D7-E1697142B6FC}
