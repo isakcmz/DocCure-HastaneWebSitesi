@@ -14,11 +14,11 @@
         public bool Status { get; set; }
 
 
-        public List<EducationDto> Educations { get; set; }
-        public List<ExperienceDto> Experiences { get; set; }
-        public List<AwardDto> Awards { get; set; }
-        public List<LocationDto> Locations { get; set; }
-        public List<string> Services { get; set; }
-        public List<string> Specializations { get; set; }
+        public List<EducationDto> Educations { get; set; } = new();
+        public List<ExperienceDto> Experiences { get; set; } = new();
+        public List<AwardDto> Awards { get; set; } = new();
+        public List<LocationDto> Locations { get; set; } = new();
+        public List<string> Services { get; set; } = new();
+        public List<string> Specializations { get; set; } = new();
     }
 }

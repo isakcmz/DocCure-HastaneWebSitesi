@@ -23,6 +23,16 @@ namespace Doccure.WebUI.Services.DoctorServices
         {
             PrepareAuthorizationHeader();
 
+            createDoctorDto.Status = true;
+            createDoctorDto.PricePerHour = 1000;
+            createDoctorDto.ExperienceYear = createDoctorDto.ExperienceYear == 0 ? 1 : createDoctorDto.ExperienceYear;
+            createDoctorDto.Educations ??=new List<EducationDto>();
+            createDoctorDto.Experiences ??= new List<ExperienceDto>();
+            createDoctorDto.Awards ??= new List<AwardDto>();
+            createDoctorDto.Locations ??= new List<LocationDto>();
+            createDoctorDto.Services ??= new List<string>();
+            createDoctorDto.Specializations ??= new List<string>();
+
             var jsonData = JsonConvert.SerializeObject(createDoctorDto);
             StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
             var responseMessage = await _httpClient.PostAsync("https://localhost:5000/api/Doctors", stringContent);

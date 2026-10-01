@@ -15,7 +15,7 @@
       "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ]
     },
     {
-      "DownstreamPathTemplate": "/api/Branches/GetBranch",
+      "DownstreamPathTemplate": "/api/Branches/{id}",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
@@ -23,7 +23,7 @@
           "Port": 7001
         }
       ],
-      "UpstreamPathTemplate": "/api/Branches/GetBranch",
+      "UpstreamPathTemplate": "/api/Branches/{id}",
       "UpstreamHttpMethod": [ "GET" ]
     },
 
@@ -42,7 +42,7 @@
       "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ]
     },
     {
-      "DownstreamPathTemplate": "/api/Branches/GetDoctor/",
+      "DownstreamPathTemplate": "/api/Doctors/{id}",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
@@ -50,7 +50,7 @@
           "Port": 7002
         }
       ],
-      "UpstreamPathTemplate": "/api/Branches/GetDoctor",
+      "UpstreamPathTemplate": "/api/Doctors/{id}",
       "UpstreamHttpMethod": [ "GET" ]
     }
 
