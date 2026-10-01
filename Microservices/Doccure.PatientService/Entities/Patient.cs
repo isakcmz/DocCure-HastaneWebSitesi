@@ -8,9 +8,6 @@
         public string InsuranceType { get; set; }
         public DateTime CreatedDate { get; set; }
         public bool Status { get; set; }
-
-        public ICollection<Appointment> Appointments { get; set; }
-        public ICollection<Prescription> Prescriptions { get; set; }
-        public ICollection<PatientVisit> PatientVisits { get; set; }
+        
     }
 }
