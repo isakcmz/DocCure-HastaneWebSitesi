@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Doccure.BranchService.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class BranchesController : ControllerBase
@@ -38,7 +38,7 @@ namespace Doccure.BranchService.Controllers
         }
 
 
-        [Authorize(Roles = "Admin")]
+        
         [HttpDelete]
         public async Task<IActionResult> DeleteBranch(string id)
         {
@@ -47,7 +47,7 @@ namespace Doccure.BranchService.Controllers
         }
 
 
-        [Authorize(Roles = "Admin")]
+        
         [HttpPut]
         public async Task<IActionResult> UpdateBranch(UpdateBranchDto updateBranchDto)
         {

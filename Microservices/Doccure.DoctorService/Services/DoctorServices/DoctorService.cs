@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Doccure.DoctorService.Dtos.BranchDtos;
 using Doccure.DoctorService.Dtos.DoctorDtos;
 using Doccure.DoctorService.Entities;
 using Doccure.DoctorService.Settings;
@@ -10,14 +11,17 @@ namespace Doccure.DoctorService.Services.DoctorServices
     {
         private readonly IMongoCollection<Doctor> _doctorCollection;
         private readonly IMapper _mapper;
+        private readonly HttpClient _httpClient;
 
-        public DoctorService(IMapper mapper, IDatabaseSettings settings)
+        public DoctorService(IMapper mapper, IDatabaseSettings settings, HttpClient httpClient)
         {
             _mapper = mapper;
 
             var client = new MongoClient(settings.ConnectionString);
             var database = client.GetDatabase(settings.DatabaseName);
             _doctorCollection = database.GetCollection<Doctor>(settings.DoctorCollectionName);
+            
+            _httpClient = httpClient;
         }
 
         public async Task CreateAsync(CreateDoctorDto dto)
@@ -50,11 +54,15 @@ namespace Doccure.DoctorService.Services.DoctorServices
             if(value == null)
                 return null;
 
+            var branch = await _httpClient.GetFromJsonAsync<BranchDto>($"https://localhost:7001/api/Branches/GetBranch?id={value.BranchId}");
+
             return new GetDoctorNameAndSurnameByIdDto
             {
                 DoctorId = value.DoctorId,
                 Name = value.Name,
-                Surname = value.Surname
+                Surname = value.Surname,
+                BranchId = value.BranchId,
+                BranchName = branch?.BranchName
             };
         }
 

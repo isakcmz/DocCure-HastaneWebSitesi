@@ -20,6 +20,8 @@ builder.Services.AddAutoMapper(typeof(Program));
 
 builder.Services.AddScoped<IDoctorService, DoctorService>();
 
+builder.Services.AddHttpClient();
+
 
 var jwt = builder.Configuration.GetSection("Jwt");
 
