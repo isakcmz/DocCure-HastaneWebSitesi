@@ -29,7 +29,7 @@ namespace Doccure.QueueService.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PatientQueueId"), 1L, 1);
 
-                    b.Property<string>("PatientQueueName")
+                    b.Property<string>("PatientName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

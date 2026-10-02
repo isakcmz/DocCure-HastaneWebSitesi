@@ -1,9 +1,11 @@
+using Doccure.QueueService.Context;
 using Doccure.QueueService.Hubs;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
+builder.Services.AddDbContext<QueueContext>();
 builder.Services.AddSignalR();
 
 builder.Services.AddControllers();

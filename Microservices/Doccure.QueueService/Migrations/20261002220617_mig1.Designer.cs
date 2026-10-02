@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Doccure.QueueService.Migrations
 {
     [DbContext(typeof(QueueContext))]
-    [Migration("20261002214138_mig1")]
+    [Migration("20261002220617_mig1")]
     partial class mig1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -31,7 +31,7 @@ namespace Doccure.QueueService.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PatientQueueId"), 1L, 1);
 
-                    b.Property<string>("PatientQueueName")
+                    b.Property<string>("PatientName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

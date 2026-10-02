@@ -14,7 +14,7 @@ namespace Doccure.QueueService.Migrations
                 {
                     PatientQueueId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    PatientQueueName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PatientName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     QueueNumber = table.Column<int>(type: "int", nullable: false),
                     Status = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
