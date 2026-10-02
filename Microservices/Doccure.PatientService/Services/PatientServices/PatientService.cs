@@ -28,9 +28,7 @@ namespace Doccure.PatientService.Services.PatientServices
 
             foreach (var patient in patients)
             {
-                var identityUser = await _httpClient
-                    .GetFromJsonAsync<IdentityUserDto>(
-                        $"https://localhost:7225/api/users/{patient.AppUserId}");
+                var identityUser = await _httpClient.GetFromJsonAsync<IdentityUserDto>($"https://localhost:7170/api/Users/{patient.AppUserId}");
 
                 var dto = new ResultPatientDto
                 {
