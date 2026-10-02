@@ -14,7 +14,7 @@
 
         public string Gender { get; set; }
 
-        public DateTime? BirthDate { get; set; }
+        public DateTime BirthDate { get; set; }
 
         public string BloodGroup { get; set; }
 

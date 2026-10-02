@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
 using Doccure.PatientService.Context;
+using Doccure.PatientService.Dtos.AppointmentDto;
+using Doccure.PatientService.Dtos.DoctorDtos;
 using Doccure.PatientService.Dtos.IdentityDtos;
 using Doccure.PatientService.Dtos.PatientDtos;
 using Microsoft.EntityFrameworkCore;
@@ -30,6 +32,31 @@ namespace Doccure.PatientService.Services.PatientServices
             {
                 var identityUser = await _httpClient.GetFromJsonAsync<IdentityUserDto>($"https://localhost:7170/api/Users/{patient.AppUserId}");
 
+                LastAppointmentDto? lastAppointment = null;
+
+                var response = await _httpClient.GetAsync(
+                    $"https://localhost:7018/api/Appointments/patient/{patient.AppUserId}/last");
+
+                if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                {
+                    lastAppointment = null;
+                }
+                else
+                {
+                    response.EnsureSuccessStatusCode();
+
+                    lastAppointment = await response.Content.ReadFromJsonAsync<LastAppointmentDto>();
+                }
+
+                DoctorSummaryDto doctor = null;
+
+                // DOCTOR + BRANCH
+                if (lastAppointment != null && !string.IsNullOrEmpty(lastAppointment.DoctorId))
+                {
+                    doctor = await _httpClient
+                        .GetFromJsonAsync<DoctorSummaryDto>($"https://localhost:7002/api/Doctors/{lastAppointment.DoctorId}/summary");
+                }
+
                 var dto = new ResultPatientDto
                 {
                     PatientId = patient.PatientId,
@@ -49,7 +76,22 @@ namespace Doccure.PatientService.Services.PatientServices
                     BloodGroup = identityUser.BloodGroup,
                     ImageUrl = identityUser.ImageUrl,
                     City = identityUser.City,
-                    Address = identityUser.Address
+                    Address = identityUser.Address,
+
+                    // APPOINTMENT
+                    LastVisitDate = lastAppointment?.AppointmentDate,
+                    CurrentDiagnosis = lastAppointment?.Diagnosis,
+
+                    // DOCTOR
+                    DoctorId = doctor?.DoctorId,
+                    DoctorName = doctor != null
+                        ? $"{doctor.Name} {doctor.Surname}"
+                        : null,
+
+                    // BRANCH
+                    BranchId = doctor?.BranchId,
+                    BranchName = doctor?.BranchName
+
                 };
 
                 result.Add(dto);

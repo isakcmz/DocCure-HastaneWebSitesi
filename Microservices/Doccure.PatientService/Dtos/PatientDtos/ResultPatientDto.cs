@@ -21,5 +21,14 @@
         public string ImageUrl { get; set; }
         public string City { get; set; }
         public string Address { get; set; }
+
+        public DateTime? LastVisitDate { get; set; }
+        public string CurrentDiagnosis { get; set; }
+
+        public string DoctorId { get; set; }
+        public string DoctorName { get; set; }
+
+        public string BranchId { get; set; }
+        public string BranchName { get; set; }
     }
 }
