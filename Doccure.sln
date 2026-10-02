@@ -12,9 +12,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Requirements", "Requirements", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "JsonData", "JsonData", "{E0F8BF1D-D589-4661-BB21-F73ADF6DE37F}"
-	ProjectSection(SolutionItems) = preProject
-		DoctorExample.txt = DoctorExample.txt
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Doccure.ReviewService", "Microservices\Doccure.ReviewService\Doccure.ReviewService.csproj", "{E73FE620-16DD-4EDA-A4B8-EAB1A1F71950}"
 EndProject
@@ -33,6 +30,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Doccure.Gateway", "ApiGateway\Doccure.Gateway\Doccure.Gateway.csproj", "{35EE23C1-3B80-48E4-BDA1-28C521FA2F46}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Doccure.PatientService", "Microservices\Doccure.PatientService\Doccure.PatientService.csproj", "{F4860277-56C0-40FF-8643-9935A1E23251}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Doccure.QueueService", "Microservices\Doccure.QueueService\Doccure.QueueService.csproj", "{FC1F9F86-19FF-4857-9582-E53F987BAD80}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -76,6 +75,10 @@ Global
 		{F4860277-56C0-40FF-8643-9935A1E23251}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F4860277-56C0-40FF-8643-9935A1E23251}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F4860277-56C0-40FF-8643-9935A1E23251}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC1F9F86-19FF-4857-9582-E53F987BAD80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC1F9F86-19FF-4857-9582-E53F987BAD80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC1F9F86-19FF-4857-9582-E53F987BAD80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC1F9F86-19FF-4857-9582-E53F987BAD80}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -91,6 +94,7 @@ Global
 		{7B6B81C2-40C1-4BD1-931C-CA1B7512DD1A} = {A7CED5F0-EFB1-4D38-ABBB-5EE6F9AC2D0B}
 		{35EE23C1-3B80-48E4-BDA1-28C521FA2F46} = {B0D909F1-671E-4149-B891-1D8EE3AD1616}
 		{F4860277-56C0-40FF-8643-9935A1E23251} = {D193125F-86C2-4314-9C92-9C6B953931CC}
+		{FC1F9F86-19FF-4857-9582-E53F987BAD80} = {D193125F-86C2-4314-9C92-9C6B953931CC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B257EF3B-C169-488F-A3D7-E1697142B6FC}
