@@ -1,6 +1,7 @@
 using Doccure.WebUI.Services.BranchServices;
 using Doccure.WebUI.Services.DoctorServices;
 using Doccure.WebUI.Services.LoginServices;
+using Doccure.WebUI.Services.PatientServices;
 using Doccure.WebUI.Services.RegisterServices;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,6 +13,7 @@ builder.Services.AddScoped<ILoginService, LoginService>();
 builder.Services.AddSession();
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<IDoctorService, DoctorService>();
+builder.Services.AddScoped<IPatientService, PatientService>();
 
 
 // Add services to the container.
