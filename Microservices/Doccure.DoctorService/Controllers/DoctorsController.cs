@@ -64,5 +64,19 @@ namespace Doccure.DoctorService.Controllers
 
             return Ok(value);
         }
+
+
+
+
+        [HttpGet("{id}/summary")]
+        public async Task<IActionResult> GetDoctorNameAndSurnameById(string id)
+        {
+            var value = await _doctorService.GetDoctorNameAndSurnameByIdAsync(id);
+            
+            if (value == null)
+                return NotFound("Doktor bulunamadı");
+            
+            return Ok(value);
+        }
     }
 }

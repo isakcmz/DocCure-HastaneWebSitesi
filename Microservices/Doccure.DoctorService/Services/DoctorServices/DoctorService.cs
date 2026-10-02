@@ -43,6 +43,21 @@ namespace Doccure.DoctorService.Services.DoctorServices
             return _mapper.Map<GetDoctorByIdDto>(value);
         }
 
+        public async Task<GetDoctorNameAndSurnameByIdDto> GetDoctorNameAndSurnameByIdAsync(string id)
+        {
+            var value = await _doctorCollection.Find(x => x.DoctorId == id).FirstOrDefaultAsync();
+
+            if(value == null)
+                return null;
+
+            return new GetDoctorNameAndSurnameByIdDto
+            {
+                DoctorId = value.DoctorId,
+                Name = value.Name,
+                Surname = value.Surname
+            };
+        }
+
         public async Task UpdateAsync(UpdateDoctorDto dto)
         {
             var value = _mapper.Map<Doctor>(dto);
