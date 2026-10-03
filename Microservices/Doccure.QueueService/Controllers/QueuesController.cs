@@ -74,5 +74,19 @@ namespace Doccure.QueueService.Controllers
         }
 
 
+
+
+
+        [HttpGet("current")]
+        public async Task<IActionResult> GetCurrentPatient()
+        {
+            var value = await _context.PatientQueues
+                .Where(x => x.Status == "Called")
+                .OrderBy(x => x.QueueNumber)
+                .FirstOrDefaultAsync();
+
+            return Ok(value);
+        }
+
     }
 }
