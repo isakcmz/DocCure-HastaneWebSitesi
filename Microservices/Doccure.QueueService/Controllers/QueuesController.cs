@@ -66,7 +66,9 @@ namespace Doccure.QueueService.Controllers
             await _hubContext.Clients.All.SendAsync(
                 "PatientCalled",
                 patient.QueueNumber,
-                patient.PatientName);
+                patient.PatientName,
+                patient.BranchName,
+                patient.AppointmentTime);
 
             return Ok("Hasta çağrıldı");
         }

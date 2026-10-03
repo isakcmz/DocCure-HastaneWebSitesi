@@ -761,14 +761,18 @@
                     <div class="hq-stat called">
                         <div class="hq-stat-icon"><i class="bi bi-megaphone"></i></div>
                         <div>
-                            <div class="hq-stat-num" id="calledCount">7</div>
+                            <div class="hq-stat-num" id="calledCount">
+                                @Model.Count(x => x.Status == "Called")
+                            </div>
                             <div class="hq-stat-lbl">Çağrılan Hasta</div>
                         </div>
                     </div>
                     <div class="hq-stat done">
                         <div class="hq-stat-icon"><i class="bi bi-check2-circle"></i></div>
                         <div>
-                            <div class="hq-stat-num" id="completedCount">21</div>
+                            <div class="hq-stat-num" id="completedCount">
+								@Model.Count(x => x.Status == "Completed")
+                            </div>
                             <div class="hq-stat-lbl">Tamamlanan</div>
                         </div>
                     </div>
@@ -815,7 +819,7 @@
 
                                     <td>@item.PatientName</td>
 
-                                    <td>Genel Poliklinik</td>
+                                    <td>@item.BranchName</td>
 
                                     <td>
 
@@ -841,7 +845,7 @@
                                     </td>
 
                                     <td>
-                                        -
+                                        @item.AppointmentTime
                                     </td>
                                 </tr>
                             }
