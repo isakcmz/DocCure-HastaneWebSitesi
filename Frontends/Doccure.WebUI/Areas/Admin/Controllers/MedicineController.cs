@@ -1,4 +1,5 @@
-﻿using Doccure.WebUI.Services.MedicineServices;
+﻿using Doccure.WebUI.Dtos.MedicineDtos;
+using Doccure.WebUI.Services.MedicineServices;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Doccure.WebUI.Areas.Admin.Controllers
@@ -20,6 +21,26 @@ namespace Doccure.WebUI.Areas.Admin.Controllers
         {
             var values = await _medicineService.GetAllMedicinesAsync();
             return View(values);
+        }
+
+
+
+
+
+
+
+        [HttpGet]
+        public IActionResult CreateMedicine()
+        {
+            return View();
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> CreateMedicine(CreateMedicineDto createMedicineDto)
+        {
+            await _medicineService.CreateMedicineAsync(createMedicineDto);
+            return RedirectToAction("MedicineList");
         }
     }
 }
