@@ -37,7 +37,7 @@ namespace Doccure.PharmacyService.Services.MedicineServices
             return _mapper.Map<List<ResultMedicineDto>>(values);
         }
 
-        public async Task<GetMedicineByIdDto> GetGetMedicineByIdAsync(int id)
+        public async Task<GetMedicineByIdDto> GetMedicineByIdAsync(int id)
         {
             var value = await _context.Medicines.FindAsync(id);
             return _mapper.Map<GetMedicineByIdDto>(value);
