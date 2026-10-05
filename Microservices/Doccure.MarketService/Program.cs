@@ -1,3 +1,5 @@
+using Doccure.MarketService.Context;
+using Doccure.MarketService.Services.ProductServices;
 using Doccure.MarketService.Services.RedisServices;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -5,6 +7,9 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddSingleton<IRedisService, RedisService>();
+builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddDbContext<MarketContext>();
+builder.Services.AddAutoMapper(typeof(Program));
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
