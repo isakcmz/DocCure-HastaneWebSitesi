@@ -33,6 +33,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Doccure.PatientService", "M
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Doccure.QueueService", "Microservices\Doccure.QueueService\Doccure.QueueService.csproj", "{FC1F9F86-19FF-4857-9582-E53F987BAD80}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Doccure.PharmacyService", "Microservices\Doccure.PharmacyService\Doccure.PharmacyService.csproj", "{D2C9D2A4-A304-403D-B8B7-C077FECAC14F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -79,6 +81,10 @@ Global
 		{FC1F9F86-19FF-4857-9582-E53F987BAD80}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FC1F9F86-19FF-4857-9582-E53F987BAD80}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FC1F9F86-19FF-4857-9582-E53F987BAD80}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2C9D2A4-A304-403D-B8B7-C077FECAC14F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2C9D2A4-A304-403D-B8B7-C077FECAC14F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2C9D2A4-A304-403D-B8B7-C077FECAC14F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2C9D2A4-A304-403D-B8B7-C077FECAC14F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -95,6 +101,7 @@ Global
 		{35EE23C1-3B80-48E4-BDA1-28C521FA2F46} = {B0D909F1-671E-4149-B891-1D8EE3AD1616}
 		{F4860277-56C0-40FF-8643-9935A1E23251} = {D193125F-86C2-4314-9C92-9C6B953931CC}
 		{FC1F9F86-19FF-4857-9582-E53F987BAD80} = {D193125F-86C2-4314-9C92-9C6B953931CC}
+		{D2C9D2A4-A304-403D-B8B7-C077FECAC14F} = {D193125F-86C2-4314-9C92-9C6B953931CC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B257EF3B-C169-488F-A3D7-E1697142B6FC}
