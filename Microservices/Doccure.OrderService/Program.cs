@@ -1,4 +1,5 @@
 using Doccure.OrderService.Context;
+using Doccure.OrderService.Services.OrderServices;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,6 +13,8 @@ builder.Services.AddDbContext<OrderContext>(opt =>
         ServerVersion.AutoDetect(
             builder.Configuration.GetConnectionString("DefaultConnection")));
 });
+builder.Services.AddScoped<IOrderService, OrderService>();
+builder.Services.AddAutoMapper(typeof(Program));
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
