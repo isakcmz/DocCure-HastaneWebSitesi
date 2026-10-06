@@ -23,5 +23,10 @@ namespace Doccure.MarketService.Services.RedisServices
         {
             return await _database.StringGetAsync(key);
         }
+
+        public async Task DeleteKeyAsync(string key)
+        {
+            await _database.KeyDeleteAsync(key);
+        }
     }
 }
