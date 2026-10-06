@@ -3,6 +3,7 @@ using Doccure.WebUI.Services.DoctorServices;
 using Doccure.WebUI.Services.LoginServices;
 using Doccure.WebUI.Services.MedicineServices;
 using Doccure.WebUI.Services.PatientServices;
+using Doccure.WebUI.Services.ProductServices;
 using Doccure.WebUI.Services.RegisterServices;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,6 +17,7 @@ builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<IDoctorService, DoctorService>();
 builder.Services.AddScoped<IPatientService, PatientService>();
 builder.Services.AddScoped<IMedicineService, MedicineService>();
+builder.Services.AddScoped<IProductService, ProductService>();
 
 
 // Add services to the container.
