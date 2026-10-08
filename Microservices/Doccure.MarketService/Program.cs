@@ -1,5 +1,6 @@
 using Doccure.MarketService.Context;
 using Doccure.MarketService.Services.CartServices;
+using Doccure.MarketService.Services.CheckoutServices;
 using Doccure.MarketService.Services.ProductServices;
 using Doccure.MarketService.Services.RedisServices;
 
@@ -12,6 +13,8 @@ builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddDbContext<MarketContext>();
 builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddScoped<ICartService, CartService>();
+builder.Services.AddScoped<ICheckoutService, CheckoutService>();
+builder.Services.AddHttpClient();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
