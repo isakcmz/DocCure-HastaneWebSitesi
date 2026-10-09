@@ -1,4 +1,6 @@
-﻿namespace Doccure.WebUI.Dtos.OrderDtos
+﻿using Doccure.WebUI.Dtos.OrderDetailDtos;
+
+namespace Doccure.WebUI.Dtos.OrderDtos
 {
     public class GetOrderByIdDto
     {
