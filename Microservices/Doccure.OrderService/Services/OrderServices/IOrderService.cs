@@ -7,5 +7,7 @@ namespace Doccure.OrderService.Services.OrderServices
         Task CreateOrderAsync(CreateOrderDto createOrderDto);
         Task<List<ResultOrderDto>> GetAllOrderAsync();
         Task<GetOrderByIdDto> GetOrderByIdAsync(int id);
+
+        
     }
 }
