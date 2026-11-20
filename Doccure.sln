@@ -39,6 +39,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Doccure.MarketService", "Mi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Doccure.OrderService", "Microservices\Doccure.OrderService\Doccure.OrderService.csproj", "{93C4AD2A-5329-47E3-B858-A745A666C5FA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Doccure.SearchService", "Microservices\Doccure.SearchService\Doccure.SearchService.csproj", "{EF2E11F1-0000-4713-87D6-8D131354C702}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -97,6 +99,10 @@ Global
 		{93C4AD2A-5329-47E3-B858-A745A666C5FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{93C4AD2A-5329-47E3-B858-A745A666C5FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{93C4AD2A-5329-47E3-B858-A745A666C5FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF2E11F1-0000-4713-87D6-8D131354C702}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF2E11F1-0000-4713-87D6-8D131354C702}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF2E11F1-0000-4713-87D6-8D131354C702}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF2E11F1-0000-4713-87D6-8D131354C702}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -116,6 +122,7 @@ Global
 		{D2C9D2A4-A304-403D-B8B7-C077FECAC14F} = {D193125F-86C2-4314-9C92-9C6B953931CC}
 		{349A9462-1FDD-40DA-9FBE-D682FA4B68E3} = {D193125F-86C2-4314-9C92-9C6B953931CC}
 		{93C4AD2A-5329-47E3-B858-A745A666C5FA} = {D193125F-86C2-4314-9C92-9C6B953931CC}
+		{EF2E11F1-0000-4713-87D6-8D131354C702} = {D193125F-86C2-4314-9C92-9C6B953931CC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B257EF3B-C169-488F-A3D7-E1697142B6FC}
